@@ -34,10 +34,10 @@
     'prefix': 'if'
     'body': '{% if ${1:expr} %}\n\t$2\n{% endif %}'
   'Else If':
-    'prefix': 'eli'
+    'prefix': 'elif'
     'body': '{% elif ${1:expr} %}\n$2'
   'Else':
-    'prefix': 'els'
+    'prefix': 'else'
     'body': '{% else %}\n$1'
   'Load Result':
     'prefix': 'load'
