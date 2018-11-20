@@ -47,6 +47,9 @@
     'body': '{{ log(${1:var}, info=${2:True}) }}$3'
   'Macro':
     'prefix': 'macro'
+    'body': '{{ ${1:macro_name}(${2:args}) }}$3'
+  'Macro Block':
+    'prefix': 'macro_block'
     'body': '{% macro ${1:name}(${2:args}) %}\n\t$3\n{% endmacro %}'
   'Return':
     'prefix': 'return'
