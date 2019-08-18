@@ -23,7 +23,7 @@
     'body': '{% docs ${1:name} %}\n\t$2\n{% enddocs %}'
   'Env Var':
     'prefix': 'env_var'
-    'body': "{{ env_var('${1:env_var_name}') }}"
+    'body': "{{ env_var('${1:env_var_name}') }}$2"
   'Filter':
     'prefix': 'filter'
     'body': '{% filter ${1:filter} %}\n\t$2\n{% endfilter %}'
@@ -33,30 +33,42 @@
   'If':
     'prefix': 'if'
     'body': '{% if ${1:expr} %}\n\t$2\n{% endif %}'
+  'Else If':
+    'prefix': 'elif'
+    'body': '{% elif ${1:expr} %}\n$2'
+  'Else':
+    'prefix': 'else'
+    'body': '{% else %}\n$1'
   'Load Result':
     'prefix': 'load'
-    'body': "load_result('${1:statement_name}')"
+    'body': "load_result('${1:statement_name}')$2"
   'Log':
     'prefix': 'log'
-    'body': '{{ log(${1:var}, info=${2:True}) }}'
+    'body': '{{ log(${1:var}, info=${2:True}) }}$3'
   'Macro':
     'prefix': 'macro'
+    'body': '{{ ${1:macro_name}(${2:args}) }}$3'
+  'Macro Block':
+    'prefix': 'macro_block'
     'body': '{% macro ${1:name}(${2:args}) %}\n\t$3\n{% endmacro %}'
+  'Ref':
+    'prefix': 'ref'
+    'body': "{{ ref('${1:model_name}') }}$2"
   'Return':
     'prefix': 'return'
-    'body': '{{ return(${1}) }}'
+    'body': '{{ return(${1}) }}$2'
   'Set':
     'prefix': 'set'
-    'body': '{% set ${1:var}=${2:value} %}'
+    'body': '{% set ${1:var}=${2:value} %}\n$3'
   'Set Block':
     'prefix': 'set_block'
     'body': '{% set ${1:name} %}\n\t$2\n{% endset %}'
+  'Source':
+    'prefix': 'source'
+    'body': "{{ source('${1:source_name}', '${2:table_name}') }}$3"
   'Statement':
     'prefix': 'statement'
     'body': '{% call statement(${2:name}, fetch_result=${2:True}) %}\n\t${3:select 1}\n{% endcall %}'
-  'Ref':
-    'prefix': 'ref'
-    'body': "{{ ref('${1:model_name}') }}"
   'Var':
     'prefix': 'var'
-    'body': "{{ var('${1:var_name}') }}"
+    'body': "{{ var('${1:var_name}') }}$2"
